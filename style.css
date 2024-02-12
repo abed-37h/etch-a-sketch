@@ -1,0 +1,39 @@
+
+
+:root {
+    --grid-side-length: 640px;
+    --number-of-grid-squares: 16;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid {
+    box-sizing: content-box;
+    border: 1px solid black;
+    width: var(--grid-side-length);
+    height: var(--grid-side-length);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid-square {
+    width: calc(var(--grid-side-length) / var(--number-of-grid-squares));
+    height: calc(var(--grid-side-length) / var(--number-of-grid-squares));
+    border: 1px solid rgba(0, 0, 0, 10%);
+}
