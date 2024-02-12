@@ -3,6 +3,7 @@
 :root {
     --grid-side-length: 640px;
     --number-of-grid-squares: 16;
+    --pen-color: red;
 }
 
 * {
@@ -36,4 +37,8 @@ body {
     width: calc(var(--grid-side-length) / var(--number-of-grid-squares));
     height: calc(var(--grid-side-length) / var(--number-of-grid-squares));
     border: 1px solid rgba(0, 0, 0, 10%);
+}
+
+.grid-square.colored {
+    background-color: var(--pen-color, red);
 }
