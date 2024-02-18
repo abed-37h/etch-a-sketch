@@ -4,6 +4,7 @@ const grid = document.querySelector('#grid');
 const root = document.querySelector(':root');
 const changePixelSizeBtn = document.querySelector('#change-pixel-size');
 const clearBtn = document.querySelector('#clear');
+const changeColorBtn = document.querySelector('#change-color');
 
 const createGrid = function (n) {
     root.style.setProperty('--number-of-grid-squares', n);
@@ -35,6 +36,10 @@ const clearGrid = function () {
     }
 };
 
+const changeColor = function (color) {
+    root.style.setProperty('--pen-color', color);
+};
+
 grid.addEventListener('mouseover', colorize);
 
 changePixelSizeBtn.addEventListener('click', () => {
@@ -53,6 +58,11 @@ changePixelSizeBtn.addEventListener('click', () => {
     createGrid(n);
 });
 
-clearBtn.addEventListener('click', clearGrid);  
+clearBtn.addEventListener('click', clearGrid);
+changeColorBtn.addEventListener('click', () => {
+    const color = prompt("Type the color you want to use");
+    if (color == null || color == '') return;
+    changeColor(color);
+});
 
 createGrid(16);

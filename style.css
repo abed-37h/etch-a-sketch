@@ -4,8 +4,8 @@
     --grid-side-length: 640px;
     --number-of-grid-squares: 16;
     --white: #f0f0f0;
-    --background-color: rgb(234, 234, 234);
     --pen-color: red;
+    --gradient-color: color-mix(in srgb, var(--pen-color), #fff 50%)
 }
 
 * {
@@ -19,14 +19,14 @@ body {
 }
 
 #container {
-    background-color: var(--background-color);
+    background-image: radial-gradient(white, var(--gradient-color));
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
 }
 
 #grid {
@@ -52,12 +52,14 @@ body {
 
 .control-btn {
     background-color: white;
+    color: rgba(0, 0, 0, .7);
     font-size: large;
+    font-weight: bold;
     padding: 12px 8px;
     height:fit-content;
     width: fit-content;
     border-style: none;
-    border: 2px solid black;
+    border: 2px solid rgba(0, 0, 0, .6);
     border-radius: 8px;
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, .2);
 }
