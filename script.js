@@ -3,6 +3,7 @@
 const grid = document.querySelector('#grid');
 const root = document.querySelector(':root');
 const changePixelSizeBtn = document.querySelector('#change-pixel-size');
+const clearBtn = document.querySelector('#clear');
 
 const createGrid = function (n) {
     root.style.setProperty('--number-of-grid-squares', n);
@@ -17,7 +18,7 @@ const createGrid = function (n) {
 };
 
 const removeGrid = function () {
-    for (const gridSquare of Array.from(grid.childNodes)) {
+    for (const gridSquare of Array.from(grid.children)) {
         gridSquare.remove();
     }
 };
@@ -26,6 +27,12 @@ const colorize = function (event) {
     const target = event.target;
 
     target.classList.add('colored');
+};
+
+const clearGrid = function () {
+    for (const gridSquare of Array.from(grid.children)) {
+        gridSquare.classList.remove('colored');
+    }
 };
 
 grid.addEventListener('mouseover', colorize);
@@ -45,5 +52,7 @@ changePixelSizeBtn.addEventListener('click', () => {
     removeGrid();
     createGrid(n);
 });
+
+clearBtn.addEventListener('click', clearGrid);  
 
 createGrid(16);
