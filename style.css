@@ -4,6 +4,7 @@
     --grid-side-length: 640px;
     --number-of-grid-squares: 16;
     --white: #f0f0f0;
+    --background-color: rgb(234, 234, 234);
     --pen-color: red;
 }
 
@@ -18,6 +19,7 @@ body {
 }
 
 #container {
+    background-color: var(--background-color);
     height: 100%;
     width: 100%;
     display: flex;
@@ -28,8 +30,10 @@ body {
 }
 
 #grid {
+    background-color: white;
+    box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, .2);
     box-sizing: content-box;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 20%);
     width: var(--grid-side-length);
     height: var(--grid-side-length);
     display: flex;
@@ -39,7 +43,7 @@ body {
 .grid-square {
     width: calc(var(--grid-side-length) / var(--number-of-grid-squares));
     height: calc(var(--grid-side-length) / var(--number-of-grid-squares));
-    border: 1px solid rgba(0, 0, 0, 10%);
+    /* border: 1px solid rgba(0, 0, 0, 10%); */
 }
 
 .grid-square.colored {
