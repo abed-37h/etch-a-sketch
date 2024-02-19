@@ -45,10 +45,6 @@ body {
     height: calc(var(--grid-side-length) / var(--number-of-grid-squares));
 }
 
-.grid-square.colored {
-    background-color: var(--pen-color, black);
-}
-
 #controls {
     display: flex;
     width: var(--grid-side-length);

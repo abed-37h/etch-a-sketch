@@ -27,12 +27,12 @@ const removeGrid = function () {
 const colorize = function (event) {
     const target = event.target;
 
-    target.classList.add('colored');
+    target.style.backgroundColor = getComputedStyle(root).getPropertyValue('--pen-color');
 };
 
 const clearGrid = function () {
     for (const gridSquare of Array.from(grid.children)) {
-        gridSquare.classList.remove('colored');
+        gridSquare.style.backgroundColor = 'white';
     }
 };
 
