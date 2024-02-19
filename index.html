@@ -11,7 +11,10 @@
     <div id="container">
         <div id="controls">
             <button id="change-color" class="control-btn">Change color</button>
-            <button id="change-pixel-size" class="control-btn">Change pixel size</button>
+            <div id="change-pixel-size">
+                <label for="pixel-size" id="pixel-size-label">16 x 16</label>
+                <input type="range" name="pixel-size" id="pixel-size" min="8" max="100" value="16" step="1">
+            </div>
             <button id="clear" class="control-btn">Clear</button>
         </div>
         

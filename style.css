@@ -43,11 +43,42 @@ body {
 .grid-square {
     width: calc(var(--grid-side-length) / var(--number-of-grid-squares));
     height: calc(var(--grid-side-length) / var(--number-of-grid-squares));
-    /* border: 1px solid rgba(0, 0, 0, 10%); */
 }
 
 .grid-square.colored {
     background-color: var(--pen-color, red);
+}
+
+#change-pixel-size {
+    margin: 12px 0;
+}
+
+#pixel-size {
+    appearance: none;
+    width: 100%;
+    background-color: transparent;
+}
+
+#pixel-size:focus {
+    outline: none;
+}
+
+#pixel-size::-webkit-slider-thumb {
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    margin-top: -7px;
+    border-radius: 50%;
+    border: 2px solid var(--pen-color);
+    background-color: var(--pen-color);
+    cursor: pointer;
+}
+
+#pixel-size::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background-color: var(--pen-color);
 }
 
 .control-btn {

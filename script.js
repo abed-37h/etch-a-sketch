@@ -2,7 +2,7 @@
 
 const grid = document.querySelector('#grid');
 const root = document.querySelector(':root');
-const changePixelSizeBtn = document.querySelector('#change-pixel-size');
+const pixelSizeSlider = document.querySelector('#pixel-size');
 const clearBtn = document.querySelector('#clear');
 const changeColorBtn = document.querySelector('#change-color');
 
@@ -42,23 +42,17 @@ const changeColor = function (color) {
 
 grid.addEventListener('mouseover', colorize);
 
-changePixelSizeBtn.addEventListener('click', () => {
-    let n = prompt('Enter new pixel size:\nMust be <= 100', 16);
-    if (isNaN(n)) {
-        n = 16;
-    }
-    else if (n > 100) {
-        n = 100;
-    }
-    else if (n < 8) {
-        n = 8;
-    }
+pixelSizeSlider.addEventListener('input', () => {
+    const pixelSizeLabel = document.querySelector('#pixel-size-label');
+    const n = pixelSizeSlider.value;
 
+    pixelSizeLabel.textContent = `${n} x ${n}`;
     removeGrid();
     createGrid(n);
 });
 
 clearBtn.addEventListener('click', clearGrid);
+
 changeColorBtn.addEventListener('click', () => {
     const color = prompt("Type the color you want to use");
     if (color == null || color == '') return;
