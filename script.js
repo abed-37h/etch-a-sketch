@@ -4,7 +4,7 @@ const grid = document.querySelector('#grid');
 const root = document.querySelector(':root');
 const pixelSizeSlider = document.querySelector('#pixel-size');
 const clearBtn = document.querySelector('#clear');
-const changeColorBtn = document.querySelector('#change-color');
+const penColorPanel = document.querySelector('#pen-color');
 
 const createGrid = function (n) {
     root.style.setProperty('--number-of-grid-squares', n);
@@ -36,10 +36,6 @@ const clearGrid = function () {
     }
 };
 
-const changeColor = function (color) {
-    root.style.setProperty('--pen-color', color);
-};
-
 grid.addEventListener('mouseover', colorize);
 
 pixelSizeSlider.addEventListener('input', () => {
@@ -53,10 +49,9 @@ pixelSizeSlider.addEventListener('input', () => {
 
 clearBtn.addEventListener('click', clearGrid);
 
-changeColorBtn.addEventListener('click', () => {
-    const color = prompt("Type the color you want to use");
-    if (color == null || color == '') return;
-    changeColor(color);
+penColorPanel.addEventListener('change', () => {
+    const color = penColorPanel.value;
+    root.style.setProperty('--pen-color', color);
 });
 
 createGrid(16);

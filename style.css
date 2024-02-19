@@ -3,8 +3,7 @@
 :root {
     --grid-side-length: 640px;
     --number-of-grid-squares: 16;
-    --white: #f0f0f0;
-    --pen-color: red;
+    --pen-color: #f00;
     --gradient-color: color-mix(in srgb, var(--pen-color), #fff 50%)
 }
 
@@ -49,6 +48,32 @@ body {
     background-color: var(--pen-color, red);
 }
 
+#pen-color {
+    appearance: none;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+}
+
+#pen-color:focus {
+    outline: none;
+}
+
+#pen-color::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#pen-color::-webkit-color-swatch {
+    border: 2px solid white;
+    border-radius: 100%;
+    border-top-left-radius: 0;
+    transform: rotate(45deg);
+    border: none;
+}
+
 #change-pixel-size {
     margin: 12px 0;
 }
@@ -82,7 +107,7 @@ body {
 }
 
 .control-btn {
-    background-color: white;
+    background-color: transparent;
     color: rgba(0, 0, 0, .7);
     font-size: large;
     font-weight: bold;
