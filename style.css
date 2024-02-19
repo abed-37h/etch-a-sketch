@@ -3,8 +3,9 @@
 :root {
     --grid-side-length: 640px;
     --number-of-grid-squares: 16;
-    --pen-color: #f00;
-    --gradient-color: color-mix(in srgb, var(--pen-color), #fff 50%)
+    --pen-color: #000;
+    --contrast-color: #fff;
+    --gradient-color: color-mix(in srgb, var(--pen-color), var(--contrast-color) 50%)
 }
 
 * {
@@ -22,10 +23,10 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 32px;
 }
 
 #grid {
@@ -45,7 +46,13 @@ body {
 }
 
 .grid-square.colored {
-    background-color: var(--pen-color, red);
+    background-color: var(--pen-color, black);
+}
+
+#controls {
+    display: flex;
+    width: var(--grid-side-length);
+    justify-content: space-around;
 }
 
 #pen-color {
@@ -67,11 +74,14 @@ body {
 }
 
 #pen-color::-webkit-color-swatch {
-    border: 2px solid white;
     border-radius: 100%;
     border-top-left-radius: 0;
     transform: rotate(45deg);
     border: none;
+}
+
+#pixel-size-label {
+    color: var(--pen-color);
 }
 
 #change-pixel-size {
@@ -108,19 +118,18 @@ body {
 
 .control-btn {
     background-color: transparent;
-    color: rgba(0, 0, 0, .7);
+    color: var(--pen-color);
     font-size: large;
     font-weight: bold;
     padding: 12px 8px;
     height:fit-content;
     width: fit-content;
     border-style: none;
-    border: 2px solid rgba(0, 0, 0, .6);
+    border: 2px solid var(--pen-color);
     border-radius: 8px;
-    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, .2);
 }
 
 .control-btn:hover {
     cursor: pointer;
-    box-shadow: none;
+    box-shadow: 1px 1px 8px 0px var(--pen-color);
 }

@@ -36,6 +36,22 @@ const clearGrid = function () {
     }
 };
 
+const getContrast = function (color) {
+    if (color[0] == '#') {
+        color = color.slice(1);
+    }
+
+    if (color.length == 3) {
+        color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2];
+    }
+
+    let r = parseInt(color.slice(0, 2), 16);
+    let g = parseInt(color.slice(2, 4), 16);
+    let b = parseInt(color.slice(4, 6), 16);
+
+    return (r * .299 + g * .587 + b * .114) > 186 ? '#000000' : '#ffffff';
+}
+
 grid.addEventListener('mouseover', colorize);
 
 pixelSizeSlider.addEventListener('input', () => {
@@ -52,6 +68,7 @@ clearBtn.addEventListener('click', clearGrid);
 penColorPanel.addEventListener('change', () => {
     const color = penColorPanel.value;
     root.style.setProperty('--pen-color', color);
+    root.style.setProperty('--contrast-color', getContrast(color));
 });
 
 createGrid(16);
