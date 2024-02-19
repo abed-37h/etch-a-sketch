@@ -2,9 +2,10 @@
 
 const grid = document.querySelector('#grid');
 const root = document.querySelector(':root');
-const pixelSizeSlider = document.querySelector('#pixel-size');
+const rgbSwitch = document.querySelector('#rgb');
 const clearBtn = document.querySelector('#clear');
 const penColorPanel = document.querySelector('#pen-color');
+const pixelSizeSlider = document.querySelector('#pixel-size');
 
 const createGrid = function (n) {
     root.style.setProperty('--number-of-grid-squares', n);
@@ -27,7 +28,9 @@ const removeGrid = function () {
 const colorize = function (event) {
     const target = event.target;
 
-    target.style.backgroundColor = getComputedStyle(root).getPropertyValue('--pen-color');
+    target.style.backgroundColor = (rgbSwitch.checked) 
+        ? '#' + Math.floor(Math.random()*16777215).toString(16) 
+        : getComputedStyle(root).getPropertyValue('--pen-color');
 };
 
 const clearGrid = function () {
@@ -53,6 +56,17 @@ const getContrast = function (color) {
 }
 
 grid.addEventListener('mouseover', colorize);
+
+rgbSwitch.addEventListener('change', () => {
+    const container = document.querySelector('#container');
+
+    if (rgbSwitch.checked) {
+        container.style.background = 'var(--rgb-linear)';
+    }
+    else {
+        container.style.background = 'radial-gradient(white, var(--gradient-color))';
+    }
+});
 
 pixelSizeSlider.addEventListener('input', () => {
     const pixelSizeLabel = document.querySelector('#pixel-size-label');
