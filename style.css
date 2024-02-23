@@ -79,20 +79,20 @@ body {
     border: none;
 }
 
-#switch {
+.switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
 }
 
-#rgb {
+.toggle {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-#slider {
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -105,7 +105,7 @@ body {
     border-radius: 34px;
 }
 
-#slider:before {
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -118,16 +118,21 @@ body {
     border-radius: 50%;
 }
 
-#rgb:checked + #slider {
+#rgb:checked + .slider {
     background-color: white;
     background-image: var(--rgb-conic);
 }
 
-#rgb:focus + #slider {
+#shade-effect:checked + .slider {
+    background-color: var(--pen-color);
+    filter: brightness(50%);
+}
+
+.toggle:focus + .slider {
     box-shadow: 0 0 1px var(--pen-color);
 }
 
-#rgb:checked + #slider:before {
+.toggle:checked + .slider:before {
     background-color: white;
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);

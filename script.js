@@ -32,11 +32,29 @@ const colorize = function (event) {
     target.style.backgroundColor = (rgbSwitch.checked) 
         ? '#' + Math.floor(Math.random()*16777215).toString(16) 
         : getComputedStyle(root).getPropertyValue('--pen-color');
+
+    const shadeEffectSwitch = document.querySelector('#shade-effect');
+
+    if (shadeEffectSwitch.checked) {
+        addShade(target);
+    }
 };
+
+const addShade = function (gridSquare) {
+    let brightness = parseInt((gridSquare.dataset.brightness || 110));
+
+    if (brightness) {
+        brightness -= 10;
+        gridSquare.style.filter = `brightness(${brightness}%)`;
+        gridSquare.dataset.brightness = brightness;
+    }
+}
 
 const clearGrid = function () {
     for (const gridSquare of Array.from(grid.children)) {
         gridSquare.style.backgroundColor = 'white';
+        gridSquare.style.filter = 'brightness(100%)';
+        gridSquare.dataset.brightness = 100;
     }
 };
 
