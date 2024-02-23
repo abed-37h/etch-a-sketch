@@ -1,9 +1,10 @@
 
 
-const grid = document.querySelector('#grid');
 const root = document.querySelector(':root');
+const grid = document.querySelector('#grid');
 const rgbSwitch = document.querySelector('#rgb');
 const clearBtn = document.querySelector('#clear');
+const controls = document.querySelector('#controls');
 const penColorPanel = document.querySelector('#pen-color');
 const pixelSizeSlider = document.querySelector('#pixel-size');
 
@@ -72,16 +73,16 @@ const getContrast = function (color) {
     let b = parseInt(color.slice(4, 6), 16);
 
     return (r * .299 + g * .587 + b * .114) > 186 ? '#000000' : '#ffffff';
-}
+};
 
 rgbSwitch.addEventListener('change', () => {
     const container = document.querySelector('#container');
 
     if (rgbSwitch.checked) {
-        container.style.background = 'var(--rgb-linear)';
+        container.parentElement.style.background = 'var(--rgb-linear)';
     }
     else {
-        container.style.background = 'radial-gradient(white, var(--gradient-color))';
+        container.parentElement.style.background = 'radial-gradient(white, var(--gradient-color))';
     }
 });
 
@@ -103,3 +104,4 @@ penColorPanel.addEventListener('change', () => {
 });
 
 createGrid(16);
+container.style.marginRight = controls.clientWidth + 128 + 'px';

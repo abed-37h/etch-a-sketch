@@ -8,19 +8,21 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
+    <h1 id="title">Enjoy Sketching And Coloring</h1>
     <div id="container">
         <div id="controls">
-            <div id="change-color">
+            <div id="change-color" class="controls-container">
+                <label for="pen-color">Change color</label>
                 <input type="color" name="pen-color" id="pen-color" value="#000000">
             </div>
-            <div id="toggle-rgb">
+            <div id="toggle-rgb" class="controls-container">
                 <label for="rgb">Use RGB colors</label>
                 <label class="switch">
                     <input type="checkbox" name="rgb" id="rgb" class="toggle">
                     <span class="slider"></span>
                 </label>
             </div>
-            <div id="toggle-shade-effect">
+            <div id="toggle-shade-effect" class="controls-container">
                 <label for="shade-effect">Enable Shade Effect</label>
                 <label class="switch">
                     <input type="checkbox" name="shade-effect" id="shade-effect" class="toggle">
@@ -31,7 +33,7 @@
                 <label for="pixel-size" id="pixel-size-label">16 x 16</label>
                 <input type="range" name="pixel-size" id="pixel-size" min="8" max="64" value="16" step="1">
             </div>
-            <button id="clear" class="control-btn">Clear</button>
+            <button id="clear">Clear</button>
         </div>
         
         <div id="grid">
