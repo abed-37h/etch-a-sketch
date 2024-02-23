@@ -112,7 +112,7 @@ body {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: var(--contrast-color);
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
@@ -128,6 +128,7 @@ body {
 }
 
 #rgb:checked + #slider:before {
+    background-color: white;
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);

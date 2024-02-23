@@ -14,6 +14,7 @@ const createGrid = function (n) {
         const gridSquare = document.createElement('div');
     
         gridSquare.classList.add('grid-square');
+        gridSquare.addEventListener('mouseover', colorize);
     
         grid.appendChild(gridSquare);
     }
@@ -54,8 +55,6 @@ const getContrast = function (color) {
 
     return (r * .299 + g * .587 + b * .114) > 186 ? '#000000' : '#ffffff';
 }
-
-grid.addEventListener('mouseover', colorize);
 
 rgbSwitch.addEventListener('change', () => {
     const container = document.querySelector('#container');
