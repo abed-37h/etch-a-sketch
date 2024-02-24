@@ -1,5 +1,7 @@
 
 
+let mouseDown = false;
+
 const root = document.querySelector(':root');
 const grid = document.querySelector('#grid');
 const rgbSwitch = document.querySelector('#rgb');
@@ -15,6 +17,12 @@ const createGrid = function (n) {
         const gridSquare = document.createElement('div');
     
         gridSquare.classList.add('grid-square');
+        grid.setAttribute('draggable', 'false');
+        gridSquare.addEventListener('mousedown', (event) => {
+            if (event.button === 0) {
+                mouseDown = true;
+            }
+        });
         gridSquare.addEventListener('mouseover', colorize);
     
         grid.appendChild(gridSquare);
@@ -28,6 +36,8 @@ const removeGrid = function () {
 };
 
 const colorize = function (event) {
+    if (!mouseDown) return;
+    
     const target = event.target;
 
     target.style.backgroundColor = (rgbSwitch.checked) 
@@ -75,6 +85,21 @@ const getContrast = function (color) {
     return (r * .299 + g * .587 + b * .114) > 186 ? '#000000' : '#ffffff';
 };
 
+window.addEventListener('mouseup', () => {
+    mouseDown = false;
+});
+
+window.addEventListener('load', () => {
+    createGrid(16);
+    container.style.marginRight = controls.clientWidth + 128 + 'px';
+});
+
+penColorPanel.addEventListener('change', () => {
+    const color = penColorPanel.value;
+    root.style.setProperty('--pen-color', color);
+    root.style.setProperty('--contrast-color', getContrast(color));
+});
+
 rgbSwitch.addEventListener('change', () => {
     const container = document.querySelector('#container');
 
@@ -96,12 +121,3 @@ pixelSizeSlider.addEventListener('input', () => {
 });
 
 clearBtn.addEventListener('click', clearGrid);
-
-penColorPanel.addEventListener('change', () => {
-    const color = penColorPanel.value;
-    root.style.setProperty('--pen-color', color);
-    root.style.setProperty('--contrast-color', getContrast(color));
-});
-
-createGrid(16);
-container.style.marginRight = controls.clientWidth + 128 + 'px';

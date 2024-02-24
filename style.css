@@ -53,6 +53,7 @@ body {
 .grid-square {
     width: calc(var(--grid-side-length) / var(--number-of-grid-squares));
     height: calc(var(--grid-side-length) / var(--number-of-grid-squares));
+    user-select: none;
 }
 
 .grid-square.bordered {
