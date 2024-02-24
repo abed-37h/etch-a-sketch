@@ -1,6 +1,7 @@
 
 
 let mouseDown = false;
+let erase = false;
 
 const root = document.querySelector(':root');
 const grid = document.querySelector('#grid');
@@ -17,10 +18,18 @@ const createGrid = function (n) {
         const gridSquare = document.createElement('div');
     
         gridSquare.classList.add('grid-square');
-        grid.setAttribute('draggable', 'false');
+        gridSquare.setAttribute('draggable', 'false');
+
         gridSquare.addEventListener('mousedown', (event) => {
             if (event.button === 0) {
                 mouseDown = true;
+                erase = false;
+                colorize(event);
+            }
+            
+            else if (event.button === 2) {
+                mouseDown = true;
+                erase = true;
                 colorize(event);
             }
         });
@@ -41,13 +50,13 @@ const colorize = function (event) {
     
     const target = event.target;
 
-    target.style.backgroundColor = (rgbSwitch.checked) 
+    target.style.backgroundColor = (erase) ? 'white' : (rgbSwitch.checked) 
         ? '#' + Math.floor(Math.random()*16777215).toString(16) 
         : getComputedStyle(root).getPropertyValue('--pen-color');
 
     const shadeEffectSwitch = document.querySelector('#shade-effect');
 
-    if (shadeEffectSwitch.checked) {
+    if (shadeEffectSwitch.checked && !erase) {
         addShade(target);
     }
     else {
@@ -100,6 +109,10 @@ window.addEventListener('mouseup', () => {
 window.addEventListener('load', () => {
     createGrid(16);
     container.style.marginRight = controls.clientWidth + 128 + 'px';
+});
+
+grid.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
 });
 
 penColorPanel.addEventListener('change', () => {

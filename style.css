@@ -15,6 +15,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, "Roboto", sans-serif;
+    font-size: large;
     color: var(--pen-color);
     user-select: none;
 }
@@ -109,7 +110,6 @@ body {
 }
 
 label {
-    font-size: large;
     font-weight: bold;
 }
 
@@ -202,7 +202,6 @@ label {
 
 #clear {
     background-color: transparent;
-    font-size: large;
     font-weight: bold;
     padding: 16px 8px;
     height:fit-content;
@@ -218,4 +217,8 @@ label {
     box-shadow: 1px 1px 8px 0px var(--pen-color);
     background-color: var(--pen-color);
     color: var(--gradient-color);
+}
+
+#erase-note {
+    color: var(--pen-color);
 }

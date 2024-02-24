@@ -20,7 +20,6 @@ Here is a preview of what you can do. Of course, it's not limited to it, so unle
 
 ## Additional features for future
 
-- Toggle between pen and eraser
 - Save work
 - Undo changes
 
