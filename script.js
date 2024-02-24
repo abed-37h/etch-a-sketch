@@ -21,6 +21,7 @@ const createGrid = function (n) {
         gridSquare.addEventListener('mousedown', (event) => {
             if (event.button === 0) {
                 mouseDown = true;
+                colorize(event);
             }
         });
         gridSquare.addEventListener('mouseover', colorize);
