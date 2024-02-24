@@ -49,23 +49,25 @@ const colorize = function (event) {
     if (shadeEffectSwitch.checked) {
         addShade(target);
     }
+    else {
+        resetBrightness(target);
+    }
 };
 
-const addShade = function (gridSquare) {
-    let brightness = parseInt((gridSquare.dataset.brightness || 110));
+const addShade = function (element) {
+    let brightness = parseInt((element.dataset.brightness || 110));
 
     if (brightness) {
         brightness -= 10;
-        gridSquare.style.filter = `brightness(${brightness}%)`;
-        gridSquare.dataset.brightness = brightness;
+        element.style.filter = `brightness(${brightness}%)`;
+        element.dataset.brightness = brightness;
     }
 }
 
 const clearGrid = function () {
     for (const gridSquare of Array.from(grid.children)) {
         gridSquare.style.backgroundColor = 'white';
-        gridSquare.style.filter = 'brightness(100%)';
-        gridSquare.dataset.brightness = 100;
+        resetBrightness(gridSquare);
     }
 };
 
@@ -83,6 +85,11 @@ const getContrast = function (color) {
     let b = parseInt(color.slice(4, 6), 16);
 
     return (r * .299 + g * .587 + b * .114) > 186 ? '#000000' : '#ffffff';
+};
+
+const resetBrightness = function (element) {
+    element.style.filter = 'brightness(100%)';
+    element.dataset.brightness = 100;
 };
 
 window.addEventListener('mouseup', () => {
